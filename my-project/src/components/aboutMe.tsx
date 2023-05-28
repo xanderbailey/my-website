@@ -4,10 +4,15 @@ import avatar from "../../public/avatar.png";
 import { Typewriter } from "react-simple-typewriter";
 import classNames from "classnames";
 import { Socials } from "./socials";
+import Head from "next/head";
 
 const AboutMe = () => {
   return (
     <div className="container px-4 mx-auto">
+      <Head>
+        <title>About Me - Xander Bailey</title>
+        <meta name="description" content="Welcome to my personal website. Learn more about me and my work." />
+      </Head>
       <div className="lg:space-x-5 lg:-mx-4 flex flex-col justify-center items-center">
         <div className="flex-1 lg:mt-12 lg:px-4 mb-10">
           <Image
@@ -18,6 +23,7 @@ const AboutMe = () => {
             width={250}
             height={250}
             placeholder="blur"
+            loading="eager"
           />
         <Socials/>
         </div>
