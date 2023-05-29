@@ -1,0 +1,39 @@
+.container {
+    max-width: 64rem; /* Adjust the max-width as needed */
+    margin: 0 auto;
+  }
+  
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+    background-color: #374151;
+    color: white;
+  }
+  
+  .navbar.dark {
+    background-color: #374151;
+    color: white;
+  }
+  
+  .link {
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  
+  .link:hover {
+    color: #0ea5e9;
+  }
+  
+  .link.dark:hover {
+    color: #9ae6ff;
+  }
+  
+  .link:not(:last-child) {
+    margin-right: 1rem;
+  }
+  

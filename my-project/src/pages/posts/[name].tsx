@@ -6,6 +6,7 @@ import path from "path";
 import fs from "fs";
 import { useRouter } from "next/router";
 import Sidebar from "@/components/Sidebar";
+import Navigation from "@/components/Navigation";
 
 const PostPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   content,
@@ -41,6 +42,7 @@ const PostPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
 
   return (
     <div className="background">
+     <Navigation/>
       <div className={styles.container}>
         <Sidebar posts={posts} activePost={router.query.name as string} isLoaded={isLoaded}/>
         <article className={`${styles.post} ${isLoaded && styles.loaded}`}>
