@@ -7,6 +7,7 @@ import fs from "fs";
 import { useRouter } from "next/router";
 import Sidebar from "@/components/Sidebar";
 import Navigation from "@/components/Navigation";
+import { getPostData } from "../api/post/[slug]";
 
 const PostPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   content,
@@ -15,7 +16,7 @@ const PostPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
     []
   );
 
-  const [isLoaded, setIsLoaded] = useState<boolean>(false); // Add isLoading state
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   const router = useRouter();
 
@@ -56,12 +57,13 @@ const PostPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const postsDirectory = path.join(process.cwd(), "content/posts");
+  const postsDirectory = path.join("./content/posts");
   const fileNames = fs.readdirSync(postsDirectory);
   const names = fileNames.map((fileName) => fileName.replace(/\.md$/, ""));
 
+  console.log(names)
   const paths = names.map((name) => ({ params: { name } }));
-
+  console.log(paths)
   return {
     paths,
     fallback: false,
@@ -70,14 +72,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const name = params?.name as string;
-  const response = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/post/${name}`);
-  const { content } = await response.json();
-
+  const {content} = getPostData(name)
   return {
-    props: {
-      content,
-    },
+      props: {
+        content,
+      },
   };
+
 };
 
 export default PostPage;
