@@ -5,7 +5,6 @@ import MarkdownRenderer from "../../components/MarkdownRenderer";
 import path from "path";
 import fs from "fs";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import Sidebar from "@/components/Sidebar";
 
 const PostPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
@@ -41,14 +40,15 @@ const PostPage: React.FC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   }, []);
 
   return (
-    <div className={styles.container}>
-      <Sidebar posts={posts} activePost={router.query.name as string} isLoaded={isLoaded}/>
-      <article className={`${styles.post} ${isLoaded && styles.loaded}`}>
-        <h1 className={styles.title}>Blog Post Title</h1>
-        <div className={styles.content}>
-          <MarkdownRenderer markdown={content} />
-        </div>
-      </article>
+    <div className="background">
+      <div className={styles.container}>
+        <Sidebar posts={posts} activePost={router.query.name as string} isLoaded={isLoaded}/>
+        <article className={`${styles.post} ${isLoaded && styles.loaded}`}>
+          <div className={styles.content}>
+            <MarkdownRenderer markdown={content} />
+          </div>
+        </article>
+      </div>
     </div>
   );
 };

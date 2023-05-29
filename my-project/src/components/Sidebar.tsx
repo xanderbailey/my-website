@@ -13,7 +13,9 @@ const Sidebar: React.FC<SidebarProps> = ({ posts, activePost, isLoaded }) => {
   const router = useRouter();
 
   return (
-    <div className={styles.sidebar}>
+    <div className={`${styles["sidebar"]} ${
+      isLoaded && styles.loaded
+    }`}>
       <h2 className={styles["sidebar-title"]}>Posts</h2>
       <div
         className={`${styles["sidebar-content"]} ${
