@@ -60,10 +60,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const postsDirectory = path.join("./content/posts");
   const fileNames = fs.readdirSync(postsDirectory);
   const names = fileNames.map((fileName) => fileName.replace(/\.md$/, ""));
-
-  console.log(names)
   const paths = names.map((name) => ({ params: { name } }));
-  console.log(paths)
   return {
     paths,
     fallback: false,
@@ -78,7 +75,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         content,
       },
   };
-
 };
 
 export default PostPage;
