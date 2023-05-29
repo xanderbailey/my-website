@@ -3,9 +3,7 @@
 @import "tailwindcss/components";
 
 @import "tailwindcss/utilities";
-body {
-    @apply dark:bg-gray-800
-}
+
 
 body {
     font-family: "Poppins", sans-serif;

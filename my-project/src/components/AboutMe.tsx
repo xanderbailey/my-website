@@ -20,7 +20,7 @@ const AboutMe = () => {
             alt="Public Avatar"
             priority={true}
             className={classNames("rounded-full", "p-2","bg-slate-50")}
-            width={250}
+            width={250} 
             height={250}
             placeholder="blur"
             loading="eager"
